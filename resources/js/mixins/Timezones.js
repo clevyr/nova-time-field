@@ -34,7 +34,7 @@ const Timezones = {
                     .format('h:mm A');
             }
 
-            return moment.tz(value, 'HH:mm', Nova.config.timezone).clone().tz(this.userTimezone).format('h:mm A');
+            return moment.utc(value, 'h:mm A').clone().tz(this.userTimezone).format('h:mm A');
         },
     }
 }
