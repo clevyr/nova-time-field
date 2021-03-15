@@ -16,7 +16,7 @@ const Timezones = {
          * Convert the given localized date time string to the application's timezone.
          */
         toAppTimezone: function toAppTimezone(value) {
-            return value ? moment.tz(value, 'HH:mm', this.userTimezone).clone().tz(Nova.config.timezone).format('HH:mm') : value;
+            return value ? moment.tz(value, 'h:mm A', this.userTimezone).clone().tz(Nova.config.timezone).format('h:mm A') : value;
         },
 
         /**
@@ -28,13 +28,13 @@ const Timezones = {
             }
 
             if (this.field.timezoneAdjustment) {
-                return moment.utc(value, 'HH:mm')
+                return moment.utc(value, 'h:mm A')
                     .clone()
                     .add(this.field.timezoneAdjustment, 'minutes')
-                    .format('HH:mm');
+                    .format('h:mm A');
             }
 
-            return moment.tz(value, 'HH:mm', Nova.config.timezone).clone().tz(this.userTimezone).format('HH:mm');
+            return moment.tz(value, 'h:mm A', Nova.config.timezone).clone().tz(this.userTimezone).format('h:mm A');
         },
     }
 }
